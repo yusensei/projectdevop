@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticket-1</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ticket-1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -39,150 +40,97 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
-        <button type="button" class="btn btn-outline-danger" style="margin-left: 10px;" onclick="location.href='index.html'">Logout</button>
+        <button type="button" class="btn btn-outline-danger ms-2" onclick="location.href='index.html'">Logout</button>
+      </form>
     </div>
   </div>
 </nav>
 
-       
-<div class="container my-4">
-  <div class="card mx-auto" style="max-width: 80%; border: none; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <div class="row g-0">
-      <!-- Image Section -->
-      <div class="col-md-4">
-        <img src="your-image.jpg" class="img-fluid h-100 object-fit-cover" alt="Thumbnail" style="border-radius: .25rem 0 0 .25rem;">
-      </div>
+<main id="destinationCards" class="container my-4"></main>
 
-      <!-- Text Section -->
-      <div class="col-md-8">
-        <div class="card-body">
-          <h6 class="text-primary fw-bold">World</h6>
-          <h3 class="card-title">Featured post</h3>
-          <p class="text-muted mb-2">Nov 12</p>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="text-primary text-decoration-none fw-semibold">
-            Continue reading <i class="bi bi-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container" style="padding-bottom: 30px;">
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+      <li class="page-item active"><a class="page-link" href="#" aria-current="page">1</a></li>
+      <li class="page-item"><a class="page-link" href="ticket2.html">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="ticket2.html">Next</a></li>
+    </ul>
+  </nav>
 </div>
 
-<div class="container my-4">
-  <div class="card mx-auto" style="max-width: 80%; border: none; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <div class="row g-0">
-      <!-- Image Section -->
-      <div class="col-md-4">
-        <img src="your-image.jpg" class="img-fluid h-100 object-fit-cover" alt="Thumbnail" style="border-radius: .25rem 0 0 .25rem;">
-      </div>
+<script>
+  const destinations = [
+    {
+      name: "The Grand Palace",
+      province: "Bangkok",
+      description: "A majestic complex of royal buildings and temples, including Wat Phra Kaew.",
+      price: 350,
+      image: "images/grand-palace.jpg",
+      link: "https://www.royalgrandpalace.th/th/home"
+    },
+    {
+      name: "Wat Phra That Doi Suthep",
+      province: "Chiang Mai",
+      description: "Sacred hilltop temple offering panoramic views and spiritual serenity.",
+      price: 200,
+      image: "images/doi-suthep.jpg",
+      link: "https://www.tourismthailand.org/Attraction/Wat-Phra-That-Doi-Suthep--"
+    },
+    {
+      name: "Phang Nga Bay",
+      province: "Phuket",
+      description: "Iconic limestone cliffs and emerald waters, perfect for boat tours.",
+      price: 450,
+      image: "images/phang-nga.jpg",
+      link: "https://www.phuket.com/phangnga/"
+    },
+    {
+      name: "Sukhothai Historical Park",
+      province: "Sukhothai",
+      description: "Ancient ruins of Thailand’s first capital, rich in cultural heritage.",
+      price: 300,
+      image: "images/sukhothai.jpg"
+    },
+    {
+      name: "Railay Beach",
+      province: "Krabi",
+      description: "Stunning beach accessible only by boat, known for rock climbing and sunsets.",
+      price: 400,
+      image: "images/railay.jpg"
+    }
+  ];
 
-      <!-- Text Section -->
-      <div class="col-md-8">
-        <div class="card-body">
-          <h6 class="text-primary fw-bold">World</h6>
-          <h3 class="card-title">Featured post</h3>
-          <p class="text-muted mb-2">Nov 12</p>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="text-primary text-decoration-none fw-semibold">
-            Continue reading <i class="bi bi-arrow-right"></i>
-          </a>
+  const container = document.getElementById("destinationCards");
+
+  destinations.forEach((place) => {
+    const encoded = encodeURIComponent(JSON.stringify(place));
+    const card = `
+      <div class="card mx-auto mb-4" style="max-width: 80%; border: none; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="${place.image}" class="img-fluid h-100 object-fit-cover" alt="${place.name}" style="border-radius: .25rem 0 0 .25rem;">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h6 class="text-primary fw-bold">${place.province}</h6>
+              <h3 class="card-title">${place.name}</h3>
+              <p class="text-muted mb-2">฿${place.price}</p>
+              <p class="card-text">${place.description}</p>
+              <a href="checkout.html?data=${encoded}" class="text-primary text-decoration-none fw-semibold">
+                Continue reading <i class="bi bi-arrow-right"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    `;
+    container.insertAdjacentHTML("beforeend", card);
+  });
+</script>
 
-<div class="container my-4">
-  <div class="card mx-auto" style="max-width: 80%; border: none; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <div class="row g-0">
-      <!-- Image Section -->
-      <div class="col-md-4">
-        <img src="your-image.jpg" class="img-fluid h-100 object-fit-cover" alt="Thumbnail" style="border-radius: .25rem 0 0 .25rem;">
-      </div>
-
-      <!-- Text Section -->
-      <div class="col-md-8">
-        <div class="card-body">
-          <h6 class="text-primary fw-bold">World</h6>
-          <h3 class="card-title">Featured post</h3>
-          <p class="text-muted mb-2">Nov 12</p>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="text-primary text-decoration-none fw-semibold">
-            Continue reading <i class="bi bi-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container my-4">
-  <div class="card mx-auto" style="max-width: 80%; border: none; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <div class="row g-0">
-      <!-- Image Section -->
-      <div class="col-md-4">
-        <img src="your-image.jpg" class="img-fluid h-100 object-fit-cover" alt="Thumbnail" style="border-radius: .25rem 0 0 .25rem;">
-      </div>
-
-      <!-- Text Section -->
-      <div class="col-md-8">
-        <div class="card-body">
-          <h6 class="text-primary fw-bold">World</h6>
-          <h3 class="card-title">Featured post</h3>
-          <p class="text-muted mb-2">Nov 12</p>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="text-primary text-decoration-none fw-semibold">
-            Continue reading <i class="bi bi-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container my-4">
-  <div class="card mx-auto" style="max-width: 80%; border: none; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-    <div class="row g-0">
-      <!-- Image Section -->
-      <div class="col-md-4">
-        <img src="your-image.jpg" class="img-fluid h-100 object-fit-cover" alt="Thumbnail" style="border-radius: .25rem 0 0 .25rem;">
-      </div>
-
-      <!-- Text Section -->
-      <div class="col-md-8">
-        <div class="card-body">
-          <h6 class="text-primary fw-bold">World</h6>
-          <h3 class="card-title">Featured post</h3>
-          <p class="text-muted mb-2">Nov 12</p>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="text-primary text-decoration-none fw-semibold">
-            Continue reading <i class="bi bi-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    </div>
-    <div style="padding: bottom 30px; ;">
-        <nav aria-label="...">
-  <ul class="pagination">
-    <li class="page-item"><a href="#" class="page-link">Previous</a></li>
-    <li class="page-item active">
-      <a class="page-link" href="#" aria-current="page">1</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="ticket2.html">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="ticket2.html">Next</a></li>
-  </ul>
-</nav>
-
-
-    </div>
-    
 </body>
 </html>
