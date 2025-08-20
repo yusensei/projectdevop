@@ -1,0 +1,140 @@
+/* รีเซ็ตค่าเบื้องต้น */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f9fcff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  background: #eaf6ff;
+  border-bottom: 1px solid #d6e9f5;
+  padding: 10px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar .brand {
+  font-size: 22px;
+  font-weight: bold;
+  color: #0d2d4d;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #0d2d4d;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navbar ul li a:hover {
+  color: #0096c7;
+}
+
+/* ---------- Search & Logout ---------- */
+.navbar .actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar input[type="text"] {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.btn-search {
+  background-color: #fff;
+  border: 1px solid #00b894;
+  color: #00b894;
+}
+
+.btn-search:hover {
+  background-color: #00b894;
+  color: #fff;
+}
+
+.btn-logout {
+  background-color: #fff;
+  border: 1px solid #e63946;
+  color: #e63946;
+}
+
+.btn-logout:hover {
+  background-color: #e63946;
+  color: #fff;
+}
+
+/* ---------- Carousel ---------- */
+.carousel {
+  width: 80%;
+  margin: 30px auto;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.carousel img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ปุ่มเลื่อน */
+.carousel .prev,
+.carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.4);
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  padding: 8px 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.carousel .prev:hover,
+.carousel .next:hover {
+  background: rgba(0,0,0,0.7);
+}
+
+.carousel .prev { left: 15px; }
+.carousel .next { right: 15px; }
+
+/* ---------- Footer ---------- */
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #e0e0e0;
+}
