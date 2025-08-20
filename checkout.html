@@ -97,20 +97,22 @@
     ];
 
     const pricingHTML = tiers.map(tier => {
-      const total = price * tier.people * (1 - tier.discount);
-      const perPerson = (total / tier.people).toFixed(2);
-      return `
-        <div class="col-md-4">
-          <div class="border rounded-3 text-center p-4 h-100 ${tier.style === 'primary' ? 'bg-primary text-white' : ''}">
-            <h5 class="fw-bold">${tier.label}</h5>
-            <h2 class="my-3 ${tier.style === 'primary' ? 'text-white' : ''}">฿${total.toFixed(2)}</h2>
-            <p class="mb-2">(${tier.people} person${tier.people > 1 ? 's' : ''})</p>
-            <p class="text-muted mb-3">฿${perPerson} per person</p>
-            <a href="#" class="btn btn-${tier.style} w-100">Select</a>
-          </div>
-        </div>
-      `;
-    }).join("");
+  const total = price * tier.people * (1 - tier.discount);
+  const perPerson = (total / tier.people).toFixed(2);
+  return `
+    <div class="col-md-4">
+      <div class="border rounded-3 text-center p-4 h-100 ${tier.style === 'primary' ? 'bg-primary text-white' : ''}">
+        <h5 class="fw-bold">${tier.label}</h5>
+        <h2 class="my-3 ${tier.style === 'primary' ? 'text-white' : ''}">฿${total.toFixed(2)}</h2>
+        <p class="mb-2">(${tier.people} person${tier.people > 1 ? 's' : ''})</p>
+        <p class="text-muted mb-3">฿${perPerson} per person</p>
+        <button class="btn btn-${tier.style} w-100" data-bs-toggle="modal" data-bs-target="#confirmModal">
+          Select
+        </button>
+      </div>
+    </div>
+  `;
+}).join("");
 
     document.getElementById("pricingTiers").innerHTML = pricingHTML;
   } else {
@@ -118,5 +120,58 @@
   }
 </script>
 
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmModalLabel">Confirm Booking</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to proceed with this booking?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" onclick="confirmBooking()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
+
+<script>
+  function confirmBooking() {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get("data");
+    const place = raw ? JSON.parse(decodeURIComponent(raw)) : null;
+
+    if (!place) {
+      alert("No destination data found.");
+      return;
+    }
+
+    fetch("save_booking.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(place)
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === "success") {
+        alert("Booking confirmed!");
+        // Optionally redirect or update UI
+      } else {
+        alert("Booking failed: " + data.message);
+      }
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      alert("Something went wrong. Please try again.");
+    });
+  }
+</script>
