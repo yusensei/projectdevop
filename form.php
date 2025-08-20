@@ -52,3 +52,29 @@ function register($user, $pass) {
 
     $conn = null;
 }
+
+function login($user, $pass) {
+    global $servername, $username, $password, $dbname;
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $stmt = $conn->prepare("SELECT userpass FROM user WHERE username = :user");
+        $stmt->bindParam(':user', $user);
+        $stmt->execute();
+        $storedPass = $stmt->fetchColumn();
+
+        if ($storedPass === false) {
+            echo json_encode(["status" => "error", "message" => "User not found"]);
+        } elseif ($storedPass === $pass) {
+            echo json_encode(["status" => "success", "message" => "Login successful"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Incorrect password"]);
+        }
+    } catch (PDOException $e) {
+        echo json_encode(["status" => "error", "message" => $e->getMessage()]);
+    }
+
+    $conn = null;
+}
