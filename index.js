@@ -56,7 +56,7 @@ function registerSubmit() {
     const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
 
     modalTitle.textContent = 'Network Error';
-    modalBody.innerHTML = `<p style="color: red;">❌ Unable to connect. Please try again later.</p>`;
+    modalBody.innerHTML = `<p style="color: red;">Unable to connect. Please try again later.</p>`;
     modal.show();
   });
 }
