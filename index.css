@@ -1,0 +1,83 @@
+/* ตั้งค่าพื้นหลัง */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #74ebd5, #9face6); /* ฟ้าไปม่วง */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* กล่อง login */
+.login-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 320px;
+}
+
+/* รูปโปรไฟล์ */
+.login-container img {
+    <img src: ="ฆ";
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+/* หัวข้อ */
+.login-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* ช่อง input */
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* ปุ่ม */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.login-container button:hover {
+    background: #0056b3;
+}
+
+/* ข้อความลิงก์ */
+.login-container p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
