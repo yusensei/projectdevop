@@ -102,7 +102,7 @@ function loginSubmit() {
     // Attach redirect logic to modal close event
     modalElement.addEventListener('hidden.bs.modal', function () {
       if (shouldRedirect) {
-        window.location.href = 'p2.html';
+        window.location.href = 'home.html';
       }
     });
 
