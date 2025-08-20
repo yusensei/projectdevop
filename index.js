@@ -67,44 +67,55 @@ function showModal() {
 }
 
 function loginSubmit() {
-    const form = document.querySelector('form');
-    const formData = new FormData(form);
-    formData.append('action', 'login');
+  const form = document.querySelector('form');
+  const formData = new FormData(form);
+  formData.append('action', 'login');
 
-    fetch('form.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        const modalBody = document.getElementById('modalBody');
-        const modalTitle = document.getElementById('exampleModalLabel');
-        const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+  fetch('form.php', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    const modalBody = document.getElementById('modalBody');
+    const modalTitle = document.getElementById('exampleModalLabel');
+    const modalElement = document.getElementById('exampleModal');
+    const modal = new bootstrap.Modal(modalElement);
 
-        if (data.status === 'success') {
-            modalTitle.textContent = 'Welcome';
-            modalBody.innerHTML = `<p>${data.message || 'Login successful!'}</p>`;
-        } else if (data.message === 'User not found') {
-            modalTitle.textContent = 'User Not Found';
-            modalBody.innerHTML = `<p>No account matches that username.</p>`;
-        } else if (data.message === 'Incorrect password') {
-            modalTitle.textContent = 'Incorrect Password';
-            modalBody.innerHTML = `<p>Password is incorrect. Please try again.</p>`;
-        } else {
-            modalTitle.textContent = 'Login Error';
-            modalBody.innerHTML = `<p>${data.message || 'Login failed.'}</p>`;
-        }
+    let shouldRedirect = false;
 
-        modal.show();
-    })
-    .catch(error => {
-        console.error('Fetch error:', error);
-        const modalBody = document.getElementById('modalBody');
-        const modalTitle = document.getElementById('exampleModalLabel');
-        const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+    if (data.status === 'success') {
+      modalTitle.textContent = 'Welcome';
+      modalBody.innerHTML = `<p>${data.message || 'Login successful!'}</p>`;
+      shouldRedirect = true;
+    } else if (data.message === 'User not found') {
+      modalTitle.textContent = 'User Not Found';
+      modalBody.innerHTML = `<p>No account matches that username.</p>`;
+    } else if (data.message === 'Incorrect password') {
+      modalTitle.textContent = 'Incorrect Password';
+      modalBody.innerHTML = `<p>Password is incorrect. Please try again.</p>`;
+    } else {
+      modalTitle.textContent = 'Login Error';
+      modalBody.innerHTML = `<p>${data.message || 'Login failed.'}</p>`;
+    }
 
-        modalTitle.textContent = 'Network Error';
-        modalBody.innerHTML = `<p style="color: red;">Unable to connect. Please try again later.</p>`;
-        modal.show();
+    // Attach redirect logic to modal close event
+    modalElement.addEventListener('hidden.bs.modal', function () {
+      if (shouldRedirect) {
+        window.location.href = 'p2.html';
+      }
     });
+
+    modal.show();
+  })
+  .catch(error => {
+    console.error('Fetch error:', error);
+    const modalBody = document.getElementById('modalBody');
+    const modalTitle = document.getElementById('exampleModalLabel');
+    const modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+
+    modalTitle.textContent = 'Network Error';
+    modalBody.innerHTML = `<p style="color: red;">Unable to connect. Please try again later.</p>`;
+    modal.show();
+  });
 }
